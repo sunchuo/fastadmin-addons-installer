@@ -1,5 +1,5 @@
 {
-    "name": "fastadmin/addons-instealler",
+    "name": "fastadmin/addons-installer",
     "description": "Fastadmin插件安装器",
     "type": "composer-plugin",
     "autoload": {
