@@ -78,19 +78,12 @@ class Installer extends LibraryInstaller
         $name = $this->getExtraName($package);
         $this->io->write('正在安装插件:'.$name.' <'.$package->getPrettyName().'>');
         $this->io->write('安装目录:'.$this->getInstallPath($package));
-
+        $this->io->write('开始下载');
         parent::install($repo, $package);
-
-        $this->io->write('安装完成');
-        $this->io->write('检查插件是否完整');
-
-        if (Service::check($name)) {
-            $this->io->write('完整');
-        }
-
-        $this->io->write('启用插件');
-        if (Service::enable($name)) {
-            $this->io->write('已启用');
+        $this->io->write('下载完成');
+        $this->io->write('执行安装');
+        if (Service::install($name, false, [], false)) {
+            $this->io->write('已安装');
         }
     }
 
