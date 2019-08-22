@@ -30,8 +30,7 @@ class Installer extends LibraryInstaller
     {
         //加载项目基础文件
         $this->io->write('加载项目基础文件');
-        !defined('APP_PATH') && define('APP_PATH', realpath($this->vendorDir.'../application/').'/');
-
+        !defined('APP_PATH') && define('APP_PATH', realpath($this->vendorDir.'/../application/').'/');
         $base_file = APP_PATH . '../thinkphp/base.php';
         if (file_exists($base_file)) {
             include_once $base_file;
