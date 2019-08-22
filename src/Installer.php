@@ -24,8 +24,10 @@ class Installer extends LibraryInstaller
         //加载项目基础文件
         $vendor_dir = $composer->getConfig()->get('vendor-dir').'/';
         $app_path = realpath($vendor_dir.'../application/').'/';
-        echo $app_path."\n";
+        echo 'app_path='.$app_path."\n";
         define('APP_PATH', $app_path);
+
+        includeIfExists($vendor_dir.'autoload.php');
         includeIfExists(APP_PATH.'../thinkphp/base.php');
 
         parent::__construct($io, $composer, $type, $filesystem, $binaryInstaller);
