@@ -61,14 +61,13 @@ class Installer extends LibraryInstaller
     {
 
         echo 'update!!!'."\n";
+
+        Service::disable('cms');
         // Update the plugin in vendor/ like a normal Composer library
         parent::update($repo, $initial, $target);
 
-        if (Service::check('cms')) {
-            echo 'cms check ok!!!'."\n";
-        } else {
-            echo 'cms check fail!!!'."\n";
-        }
+        Service::enable('cms');
+
     }
 
 
@@ -78,6 +77,9 @@ class Installer extends LibraryInstaller
         echo 'install!!!'."\n";
 
         parent::install($repo, $package);
+        Service::install('cms', false);
+        Service::enable('cms');
+
 
 //
 //        try {
@@ -94,6 +96,8 @@ class Installer extends LibraryInstaller
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         echo 'uninstall!!!'."\n";
+        Service::disable('cms');
+        Service::uninstall('cms');
         // Uninstall the plugin from vendor/ like a normal Composer library
         parent::uninstall($repo, $package);
 
