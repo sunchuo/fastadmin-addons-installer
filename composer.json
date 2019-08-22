@@ -1,0 +1,19 @@
+{
+    "name": "fastadmin/addons-instealler",
+    "description": "Fastadmin插件安装器",
+    "type": "composer-plugin",
+    "autoload": {
+        "psr-4": {
+            "Fastadmin\\AddonsInstaller\\": "src/"
+        }
+    },
+    "extra": {
+        "class": "Fastadmin\\AddonsInstaller\\Plugin"
+    },
+    "require": {
+        "composer-plugin-api": "^1.1"
+    },
+    "require-dev": {
+        "composer/composer": "^1.9"
+    }
+}
