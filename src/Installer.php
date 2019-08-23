@@ -34,15 +34,17 @@ class Installer extends LibraryInstaller
         $this->io->write('加载项目基础文件');
         !defined('APP_PATH') && define('APP_PATH', realpath($this->vendorDir.'/../application/').'/');
         $base_file = APP_PATH . '../thinkphp/base.php';
-        if (file_exists($base_file) && class_exists(App::class) && class_exists(Db::class)) {
+        if (file_exists($base_file)) {
             include_once $base_file;
-            if (!empty(App::initCommon())) {
-                try {
-                    Db::execute("SELECT 1");
-                    return true;
-                } catch (\Exception $e) {
+            if (class_exists(App::class) && class_exists(Db::class)) {
+                if (!empty(App::initCommon())) {
+                    try {
+                        Db::execute("SELECT 1");
+                        return true;
+                    } catch (\Exception $e) {
+                    }
+                    $this->io->write('已加载');
                 }
-                $this->io->write('已加载');
             }
         }
 
