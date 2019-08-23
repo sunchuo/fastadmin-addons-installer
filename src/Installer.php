@@ -11,6 +11,7 @@ use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Util\Filesystem;
 use think\addons\Service;
 use think\App;
+use think\Db;
 
 
 class Installer extends LibraryInstaller
@@ -32,17 +33,19 @@ class Installer extends LibraryInstaller
         $this->io->write('加载项目基础文件');
         !defined('APP_PATH') && define('APP_PATH', realpath($this->vendorDir.'/../application/').'/');
         $base_file = APP_PATH . '../thinkphp/base.php';
-        if (file_exists($base_file)) {
+        if (file_exists($base_file) && class_exists(App::class) && class_exists(Db::class)) {
             include_once $base_file;
             if (!empty(App::initCommon())) {
+                Db::execute("SELECT 1");
                 $this->io->write('已加载');
             } else {
                 throw new \Exception('加载失败');
             }
+        } else {
+            throw new \Exception('环境不完整');
         }
     }
-
-
+    
     public function getInstallPath(PackageInterface $package)
     {
         $type = $package->getType();
