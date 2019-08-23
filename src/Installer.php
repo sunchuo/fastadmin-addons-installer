@@ -23,6 +23,7 @@ class Installer extends LibraryInstaller
 
     public function __construct(IOInterface $io, Composer $composer, $type = 'library', Filesystem $filesystem = null, BinaryInstaller $binaryInstaller = null)
     {
+
         parent::__construct($io, $composer, $type, $filesystem, $binaryInstaller);
     }
 
@@ -36,16 +37,18 @@ class Installer extends LibraryInstaller
         if (file_exists($base_file) && class_exists(App::class) && class_exists(Db::class)) {
             include_once $base_file;
             if (!empty(App::initCommon())) {
-                Db::execute("SELECT 1");
+                try {
+                    Db::execute("SELECT 1");
+                    return true;
+                } catch (\Exception $e) {
+                }
                 $this->io->write('已加载');
-            } else {
-                throw new \Exception('加载失败');
             }
-        } else {
-            throw new \Exception('环境不完整');
         }
+
+        throw new \Exception('请检查Fastadmin是否已经正确安装');
     }
-    
+
     public function getInstallPath(PackageInterface $package)
     {
         $type = $package->getType();
