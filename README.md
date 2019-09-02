@@ -26,11 +26,6 @@ composer require fastadmin/addons-installer dev-master
 ```
 
 
-
-
-### composer update 安装 fastadmin/addons-installer
-
-
 ### 把自己的插件代码放到git仓库，需要在插件根目录创建composer.json文件，内容如下（去掉注释，json不支持注释）：
 
 ```json
