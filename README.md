@@ -43,7 +43,7 @@
     "repositories": {
        {
             "type": "git",
-            "url": "git@github.com:sunchuo/fastadmin-addons-cms.git"
+            "url": "git@github.com:sunchuo/fastadmin-addons-cms.git" //修改成你自己的插件git仓库地址
         }
     }
 ```
