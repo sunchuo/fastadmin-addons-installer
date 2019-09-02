@@ -1,8 +1,6 @@
 # 使用composer管理fastadmin插件
 
 
-
-
 - 插件代码可以独立的用git管理，自己针对插件做二次开发后，还可以随时合并官方插件的变更。
 - 插件代码更新后，使用composer把插件更新到最新的代码。
 
@@ -10,7 +8,14 @@
 # 使用方法
 
 
-### 因为fastadmin/addons-install暂时没有发布packigst，所以安装需要指定仓木。更改主项目的composer.json 增加
+### 安装 fastadmin/addons-installer
+
+```
+composer require fastadmin/addons-installer dev-master
+```
+
+或者更改你的项目的composer.json，在 repositories 增加 fastadmin/addons-installer 的仓库地址后，执行安装命令。
+
 ```
 "repositories": {
   {
@@ -19,6 +24,8 @@
    }
 }
 ```
+
+
 
 
 ### composer update 安装 fastadmin/addons-installer
