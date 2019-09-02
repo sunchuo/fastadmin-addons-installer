@@ -53,15 +53,22 @@
 
 ```composer require fastadmin/addons-cms dev-master```
 
+![](https://raw.githubusercontent.com/sunchuo/fastadmin-addons-installer/master/preview0.png)
+
+
 ### 更新插件
 ```
 composer update fastadmin/addons-cms
 ```
+
+![](https://raw.githubusercontent.com/sunchuo/fastadmin-addons-installer/master/preview1.png)
 ### 删除插件
 
 ```
 composer remove fastadmin/addons-cms
 ```
+
+![](https://raw.githubusercontent.com/sunchuo/fastadmin-addons-installer/master/preview2.png)
 
 
 
